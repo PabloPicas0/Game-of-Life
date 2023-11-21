@@ -1,13 +1,25 @@
 <!DOCTYPE html>
 <html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="stylesheet" href="style.css">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="stylesheet" href="style.css" />
     <script src="script.js" defer></script>
     <title>Game of Life</title>
-</head>
-<body>
-    <h1>Hello game of life</h1>
-</body>
+  </head>
+  <body>
+    <h1>Conway's Game of Life</h1>
+
+    <div class="boardWrapper">
+      <div class="board"></div>
+    </div>
+
+    <div class="optionsWrapper">
+      <div id="generation">Generation:</div>
+      <button id="start/pause">start/pause</button>
+      <button id="randomize">randomize</button>
+      <button id="clear">clear board</button>
+      <button id="patterns">patterns</button>
+    </div>
+  </body>
 </html>
