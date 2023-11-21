@@ -1,0 +1,38 @@
+* {
+  box-sizing: border-box;
+}
+
+body {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+
+button {
+  text-transform: capitalize;
+}
+
+.boardWrapper {
+  border: 2px solid gray;
+}
+
+.board {
+  width: 720px;
+  height: 420px;
+}
+
+.optionsWrapper {
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+  margin-top: 20px;
+}
+
+.cell {
+  width: 15px;
+  height: 15px;
+  border-right: 1px solid black;
+  border-bottom: 1px solid black;
+  float: left;
+}
