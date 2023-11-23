@@ -1,5 +1,5 @@
 const board = document.querySelector(".board");
-const cellGeneration = document.getElementById("generation");
+const generationCount = document.getElementById("generation");
 
 let grid = [];
 let generation = 0;
@@ -69,25 +69,31 @@ const getCellNeighbours = (grid, i, j) => {
 };
 
 const nextGeneration = (grid, rows, columns) => {
+  const futureGeneration = new Array(rows);
+
+  for (let i = 0; i < rows; i++) {
+    futureGeneration[i] = new Array(columns).fill(0);
+  }
+
   for (let i = 0; i < rows; i++) {
     for (let j = 0; j < columns; j++) {
       const cellNeighbours = getCellNeighbours(grid, i, j);
-      
+
       if (grid[i][j] === 1 && cellNeighbours < 2) {
-        grid[i][j] = 0;
+        futureGeneration[i][j] = 0;
       } else if (grid[i][j] === 1 && cellNeighbours > 3) {
-        grid[i][j] = 0;
+        futureGeneration[i][j] = 0;
       } else if (grid[i][j] === 0 && cellNeighbours === 3) {
-        grid[i][j] = 1;
+        futureGeneration[i][j] = 1;
       } else {
-        grid[i][j] = grid[i][j];
+        futureGeneration[i][j] = grid[i][j];
       }
     }
   }
 
   for (let i = 0; i < rows; i++) {
     for (let j = 0; j < columns; j++) {
-      const isCellAlive = grid[i][j];
+      const isCellAlive = futureGeneration[i][j];
       const cell = document.getElementById(`${i}-${j}`);
 
       if (isCellAlive === 1) {
@@ -99,7 +105,9 @@ const nextGeneration = (grid, rows, columns) => {
   }
 
   generation++;
-  cellGeneration.textContent = `Generation: ${generation}`;
+  generationCount.textContent = `Generation: ${generation}`;
+
+  return futureGeneration;
 };
 
 const sleep = async (time) => {
@@ -112,10 +120,9 @@ const sleep = async (time) => {
 
 const redraw = async () => {
   while (true) {
-    nextGeneration(grid, rows, columns);
+    grid = nextGeneration(grid, rows, columns);
     await sleep(80);
   }
 };
 
-nextGeneration(grid, rows, columns);
-// redraw()
+//  redraw()
