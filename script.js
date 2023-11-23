@@ -1,8 +1,11 @@
 const board = document.querySelector(".board");
 const generationCount = document.getElementById("generation-number");
 
+const pauseGame = document.getElementById("start/pause");
+
 let grid = [];
 let generation = 0;
+let start = true;
 const rows = 28;
 const columns = 48;
 
@@ -118,11 +121,16 @@ const sleep = async (time) => {
   });
 };
 
-const redraw = async () => {
-  while (true) {
+const startGame = async () => {
+  while (start) {
     grid = nextGeneration(grid, rows, columns);
     await sleep(80);
   }
 };
 
-//  redraw()
+pauseGame.addEventListener("click", () => {
+  start = !start;
+  startGame();
+});
+
+startGame();
