@@ -1,5 +1,5 @@
 const board = document.querySelector(".board");
-const generationCount = document.getElementById("generation");
+const generationCount = document.getElementById("generation-number");
 
 let grid = [];
 let generation = 0;
@@ -105,7 +105,7 @@ const nextGeneration = (grid, rows, columns) => {
   }
 
   generation++;
-  generationCount.textContent = `Generation: ${generation}`;
+  generationCount.textContent = `${generation}`;
 
   return futureGeneration;
 };
