@@ -13,6 +13,10 @@ button {
   text-transform: capitalize;
 }
 
+#generation {
+  text-align: center;
+}
+
 .boardWrapper {
   border: 2px solid gray;
 }
