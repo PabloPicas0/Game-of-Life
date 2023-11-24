@@ -3,6 +3,7 @@ const generationCount = document.getElementById("generation-number");
 
 const pauseGame = document.getElementById("start/pause");
 const clear = document.getElementById("clear");
+const randomize = document.getElementById("randomize");
 
 let grid = [];
 let generation = 0;
@@ -132,6 +133,23 @@ const startGame = async () => {
 pauseGame.addEventListener("click", () => {
   start = !start;
   startGame();
+});
+
+randomize.addEventListener("click", () => {
+  const newGrid = [];
+
+  for (let i = 0; i < rows; i++) {
+    const row = [];
+
+    for (let j = 0; j < columns; j++) {
+      const isPopulated = Math.random() > 0.5 ? 1 : 0;
+      row.push(isPopulated);
+    }
+
+    newGrid.push(row);
+  }
+
+  grid = newGrid;
 });
 
 clear.addEventListener("click", () => {
