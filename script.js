@@ -2,6 +2,7 @@ const board = document.querySelector(".board");
 const generationCount = document.getElementById("generation-number");
 
 const pauseGame = document.getElementById("start/pause");
+const clear = document.getElementById("clear");
 
 let grid = [];
 let generation = 0;
@@ -131,6 +132,27 @@ const startGame = async () => {
 pauseGame.addEventListener("click", () => {
   start = !start;
   startGame();
+});
+
+clear.addEventListener("click", () => {
+  const clearBoard = new Array(rows);
+
+  for (let i = 0; i < rows; i++) {
+    clearBoard[i] = new Array(columns).fill(0);
+  }
+
+  for (let i = 0; i < rows; i++) {
+    for (let j = 0; j < columns; j++) {
+      const cell = document.getElementById(`${i}-${j}`);
+
+      cell.style.backgroundColor = null;
+    }
+  }
+
+  start = false;
+  grid = clearBoard;
+  generation = 0;
+  generationCount.textContent = `${generation}`;
 });
 
 startGame();
