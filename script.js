@@ -149,6 +149,7 @@ randomize.addEventListener("click", () => {
     newGrid.push(row);
   }
 
+  generation = 0
   grid = newGrid;
 });
 
