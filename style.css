@@ -19,6 +19,13 @@ button {
   text-align: center;
 }
 
+#start:hover,
+#randomize:hover,
+#clear:hover,
+#patterns:hover {
+  box-shadow: 0px 0px 10px 2px green;
+}
+
 .boardWrapper {
   border: 2px solid gray;
   border-radius: 5px;
