@@ -1,7 +1,9 @@
+"use strict"
+
 const board = document.querySelector(".board");
 const generationCount = document.getElementById("generation-number");
 
-const pauseGame = document.getElementById("start/pause");
+const pauseGame = document.getElementById("start");
 const clear = document.getElementById("clear");
 const randomize = document.getElementById("randomize");
 
