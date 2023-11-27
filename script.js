@@ -28,7 +28,7 @@ for (let i = 0; i < rows; i++) {
     div.id = `${i}-${j}`;
     div.classList.add("cell");
 
-    if (grid[i][j] === 1) div.style.backgroundColor = "green";
+    if (grid[i][j] === 1) div.style.backgroundColor = "#4caf50";
 
     board.appendChild(div);
   }
@@ -102,7 +102,7 @@ const nextGeneration = (grid, rows, columns) => {
       const cell = document.getElementById(`${i}-${j}`);
 
       if (isCellAlive === 1) {
-        cell.style.backgroundColor = "green";
+        cell.style.backgroundColor = "#4caf50";
       } else {
         cell.style.backgroundColor = null;
       }

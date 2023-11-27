@@ -5,8 +5,10 @@
 body {
   display: flex;
   flex-direction: column;
-  justify-content: center;
   align-items: center;
+  min-height: calc(100vh - 16px);
+  background-color: #191919;
+  color: whitesmoke;
 }
 
 button {
@@ -19,6 +21,7 @@ button {
 
 .boardWrapper {
   border: 2px solid gray;
+  border-radius: 5px;
 }
 
 .board {
@@ -36,7 +39,7 @@ button {
 .cell {
   width: 15px;
   height: 15px;
-  border-right: 1px solid black;
-  border-bottom: 1px solid black;
+  border-right: 1px solid #757575;
+  border-bottom: 1px solid #757575;
   float: left;
 }
