@@ -137,6 +137,7 @@ pauseGame.addEventListener("click", () => {
   startGame();
 });
 
+// TODO: This doesn't work if game was paused 
 randomize.addEventListener("click", () => {
   const newGrid = [];
 
