@@ -1,4 +1,7 @@
-"use strict"
+"use strict";
+
+import sleep from "./utils/sleep.js";
+import getCellNeighbours from "./utils/getCellNeighbours.js";
 
 const board = document.querySelector(".board");
 const generationCount = document.getElementById("generation-number");
@@ -35,45 +38,6 @@ for (let i = 0; i < rows; i++) {
     board.appendChild(div);
   }
 }
-
-// TODO: DRY this function
-const getCellNeighbours = (grid, i, j) => {
-  let neighbours = 0;
-
-  // check horizontal cells
-  if (j + 1 < 48 && grid[i][j + 1] === 1) {
-    neighbours++;
-  }
-  if (j - 1 >= 0 && grid[i][j - 1] === 1) {
-    neighbours++;
-  }
-
-  // check vertical cells
-  if (i + 1 < 28 && grid[i + 1][j] === 1) {
-    neighbours++;
-  }
-  if (i - 1 >= 0 && grid[i - 1][j] === 1) {
-    neighbours++;
-  }
-
-  // check lower diagonal cells
-  if (i + 1 < 28 && j + 1 < 48 && grid[i + 1][j + 1] === 1) {
-    neighbours++;
-  }
-  if (i + 1 < 28 && j - 1 >= 0 && grid[i + 1][j - 1] === 1) {
-    neighbours++;
-  }
-
-  // check upper diagonal cells
-  if (i - 1 >= 0 && j + 1 < 48 && grid[i - 1][j + 1] === 1) {
-    neighbours++;
-  }
-  if (i - 1 >= 0 && j - 1 >= 0 && grid[i - 1][j - 1] === 1) {
-    neighbours++;
-  }
-
-  return neighbours;
-};
 
 const nextGeneration = (grid, rows, columns) => {
   const futureGeneration = new Array(rows);
@@ -117,14 +81,6 @@ const nextGeneration = (grid, rows, columns) => {
   return futureGeneration;
 };
 
-const sleep = async (time) => {
-  return new Promise((resolve) => {
-    setTimeout(() => {
-      resolve();
-    }, time);
-  });
-};
-
 const startGame = async () => {
   while (start) {
     grid = nextGeneration(grid, rows, columns);
@@ -137,7 +93,6 @@ pauseGame.addEventListener("click", () => {
   startGame();
 });
 
-// TODO: This doesn't work if game was paused 
 randomize.addEventListener("click", () => {
   const newGrid = [];
 
@@ -152,8 +107,13 @@ randomize.addEventListener("click", () => {
     newGrid.push(row);
   }
 
-  generation = 0
+  generation = 0;
   grid = newGrid;
+
+  if (!start) {
+    start = true;
+    startGame();
+  }
 });
 
 clear.addEventListener("click", () => {
