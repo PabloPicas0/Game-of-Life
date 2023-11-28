@@ -16,15 +16,12 @@ button {
   text-transform: capitalize;
 }
 
-#generation {
+.generation {
   font-size: 18px;
   text-align: center;
 }
 
-#start,
-#randomize,
-#clear,
-#patterns {
+.glow-button {
   background-color: #c2fbd7;
   border-radius: 100px;
   box-shadow: rgba(44, 187, 99, 0.2) 0 -25px 18px -14px inset, rgba(44, 187, 99, 0.15) 0 1px 2px,
@@ -43,10 +40,7 @@ button {
   touch-action: manipulation;
 }
 
-#start:hover,
-#randomize:hover,
-#clear:hover,
-#patterns:hover {
+.glow-button:hover {
   box-shadow: rgba(44, 187, 99, 0.35) 0 -25px 18px -14px inset, rgba(44, 187, 99, 0.25) 0 1px 2px,
     rgba(44, 187, 99, 0.25) 0 2px 4px, rgba(44, 187, 99, 0.25) 0 4px 8px, rgba(44, 187, 99, 0.25) 0 8px 16px,
     rgba(44, 187, 99, 0.25) 0 16px 32px;
@@ -67,9 +61,13 @@ button {
 
 .optionsWrapper {
   display: flex;
+  margin-top: 40px;
+}
+
+.options {
+  display: flex;
   flex-direction: column;
   gap: 20px;
-  margin-top: 40px;
 }
 
 .cell {
