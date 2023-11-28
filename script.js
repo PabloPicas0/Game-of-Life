@@ -10,12 +10,15 @@ const generationCount = document.getElementById("generation-number");
 const pauseGame = document.getElementById("start");
 const clear = document.getElementById("clear");
 const randomize = document.getElementById("randomize");
+const patterns = document.getElementById("patterns");
+const patternOptions = document.getElementById("pattern-options");
 
 const rows = 28;
 const columns = 48;
 let grid = createGrid(rows, columns);
 let generation = 0;
 let start = true;
+let isPatternOptionsVisible = false;
 
 for (let i = 0; i < rows; i++) {
   for (let j = 0; j < columns; j++) {
@@ -112,6 +115,11 @@ clear.addEventListener("click", () => {
   grid = clearBoard;
   generation = 0;
   generationCount.textContent = `${generation}`;
+});
+
+patterns.addEventListener("click", () => {
+  isPatternOptionsVisible = !isPatternOptionsVisible;
+  patternOptions.style.display = isPatternOptionsVisible ? "block" : "none";
 });
 
 startGame();
