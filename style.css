@@ -76,6 +76,10 @@ button {
   gap: 20px;
 }
 
+.patterns {
+  display: none;
+}
+
 .pattern-options-wrapper {
   display: flex;
   gap: 20px;
