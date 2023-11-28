@@ -2,6 +2,7 @@
 
 import sleep from "./utils/sleep.js";
 import getCellNeighbours from "./utils/getCellNeighbours.js";
+import createGrid from "./utils/createGrid.js";
 
 const board = document.querySelector(".board");
 const generationCount = document.getElementById("generation-number");
@@ -10,22 +11,11 @@ const pauseGame = document.getElementById("start");
 const clear = document.getElementById("clear");
 const randomize = document.getElementById("randomize");
 
-let grid = [];
-let generation = 0;
-let start = true;
 const rows = 28;
 const columns = 48;
-
-for (let i = 0; i < rows; i++) {
-  const row = [];
-
-  for (let j = 0; j < columns; j++) {
-    const isPopulated = Math.random() > 0.5 ? 1 : 0;
-    row.push(isPopulated);
-  }
-
-  grid.push(row);
-}
+let grid = createGrid(rows, columns);
+let generation = 0;
+let start = true;
 
 for (let i = 0; i < rows; i++) {
   for (let j = 0; j < columns; j++) {
@@ -94,21 +84,8 @@ pauseGame.addEventListener("click", () => {
 });
 
 randomize.addEventListener("click", () => {
-  const newGrid = [];
-
-  for (let i = 0; i < rows; i++) {
-    const row = [];
-
-    for (let j = 0; j < columns; j++) {
-      const isPopulated = Math.random() > 0.5 ? 1 : 0;
-      row.push(isPopulated);
-    }
-
-    newGrid.push(row);
-  }
-
   generation = 0;
-  grid = newGrid;
+  grid = createGrid(rows, columns);
 
   if (!start) {
     start = true;
