@@ -21,6 +21,11 @@ button {
   text-align: center;
 }
 
+.patterns-text {
+  margin-top: 0px;
+  margin-bottom: 42px;
+}
+
 .glow-button {
   background-color: #c2fbd7;
   border-radius: 100px;
@@ -61,12 +66,18 @@ button {
 
 .optionsWrapper {
   display: flex;
+  gap: 20px;
   margin-top: 40px;
 }
 
 .options {
   display: flex;
   flex-direction: column;
+  gap: 20px;
+}
+
+.pattern-options-wrapper {
+  display: flex;
   gap: 20px;
 }
 
