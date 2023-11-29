@@ -81,6 +81,7 @@ const nextGeneration = (grid, rows, columns) => {
     }
   }
 
+  // TODO: DRY this part of code
   for (let i = 0; i < rows; i++) {
     for (let j = 0; j < columns; j++) {
       const isCellAlive = futureGeneration[i][j];
@@ -151,6 +152,7 @@ patterns.addEventListener("click", () => {
 gliderGun.addEventListener("click", () => {
   grid = createPattern(gunPattern, rows, columns);
 
+  // TODO: DRY this part of code
   for (let i = 0; i < rows; i++) {
     for (let j = 0; j < columns; j++) {
       const isCellAlive = grid[i][j];
@@ -168,6 +170,7 @@ gliderGun.addEventListener("click", () => {
 pulsar.addEventListener("click", () => {
   grid = createPattern(pulsarPattern, rows, columns);
 
+  // TODO: DRY this part of code
   for (let i = 0; i < rows; i++) {
     for (let j = 0; j < columns; j++) {
       const isCellAlive = grid[i][j];
