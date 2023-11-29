@@ -3,6 +3,8 @@
 import sleep from "./utils/sleep.js";
 import getCellNeighbours from "./utils/getCellNeighbours.js";
 import createGrid from "./utils/createGrid.js";
+import createPattern from "./utils/createPattern.js";
+import { babyPulsar, gun } from "./utils/patterns.js";
 
 const board = document.querySelector(".board");
 const generationCount = document.getElementById("generation-number");
@@ -13,11 +15,14 @@ const randomize = document.getElementById("randomize");
 const patterns = document.getElementById("patterns");
 const patternOptions = document.getElementById("pattern-options");
 
+const gliderGun = document.getElementById("glider-gun");
+const smallPulsar = document.getElementById("baby-pulsar");
+
 const rows = 28;
 const columns = 48;
 let grid = createGrid(rows, columns);
 let generation = 0;
-let start = true;
+let start = false;
 let isPatternOptionsVisible = false;
 
 for (let i = 0; i < rows; i++) {
@@ -30,6 +35,26 @@ for (let i = 0; i < rows; i++) {
 
     board.appendChild(div);
   }
+}
+
+const cells = document.getElementsByClassName("cell");
+
+for (const cell of cells) {
+  cell.addEventListener("click", function () {
+    const coordinates = this.id.split("-");
+    const row = Number(coordinates[0]);
+    const column = Number(coordinates[1]);
+
+    if (grid[row][column] === 1) {
+      grid[row][column] = 0;
+      this.style.backgroundColor = null;
+    } else {
+      grid[row][column] = 1;
+      this.style.backgroundColor = "#4caf50";
+    }
+    console.log(row, column);
+    console.log(grid);
+  });
 }
 
 const nextGeneration = (grid, rows, columns) => {
@@ -121,5 +146,7 @@ patterns.addEventListener("click", () => {
   isPatternOptionsVisible = !isPatternOptionsVisible;
   patternOptions.style.display = isPatternOptionsVisible ? "block" : "none";
 });
+
+
 
 startGame();
