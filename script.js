@@ -4,7 +4,7 @@ import sleep from "./utils/sleep.js";
 import getCellNeighbours from "./utils/getCellNeighbours.js";
 import createGrid from "./utils/createGrid.js";
 import createPattern from "./utils/createPattern.js";
-import { babyPulsar, gun } from "./utils/patterns.js";
+import { babyPulsarPattern, gunPattern, pulsarPattern } from "./utils/patterns.js";
 
 const board = document.querySelector(".board");
 const generationCount = document.getElementById("generation-number");
@@ -16,6 +16,7 @@ const patterns = document.getElementById("patterns");
 const patternOptions = document.getElementById("pattern-options");
 
 const gliderGun = document.getElementById("glider-gun");
+const pulsar = document.getElementById("pulsar");
 const smallPulsar = document.getElementById("baby-pulsar");
 
 const rows = 28;
@@ -148,7 +149,24 @@ patterns.addEventListener("click", () => {
 });
 
 gliderGun.addEventListener("click", () => {
-  grid = createPattern(gun, rows, columns);
+  grid = createPattern(gunPattern, rows, columns);
+
+  for (let i = 0; i < rows; i++) {
+    for (let j = 0; j < columns; j++) {
+      const isCellAlive = grid[i][j];
+      const cell = document.getElementById(`${i}-${j}`);
+
+      if (isCellAlive === 1) {
+        cell.style.backgroundColor = "#4caf50";
+      } else {
+        cell.style.backgroundColor = null;
+      }
+    }
+  }
+});
+
+pulsar.addEventListener("click", () => {
+  grid = createPattern(pulsarPattern, rows, columns);
 
   for (let i = 0; i < rows; i++) {
     for (let j = 0; j < columns; j++) {
@@ -165,7 +183,7 @@ gliderGun.addEventListener("click", () => {
 });
 
 smallPulsar.addEventListener("click", () => {
-  grid = createPattern(babyPulsar, rows, columns);
+  grid = createPattern(babyPulsarPattern, rows, columns);
 
   // TODO: DRY this part of code
   for (let i = 0; i < rows; i++) {
