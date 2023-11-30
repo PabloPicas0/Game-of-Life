@@ -4,7 +4,13 @@ import sleep from "./utils/sleep.js";
 import getCellNeighbours from "./utils/getCellNeighbours.js";
 import createGrid from "./utils/createGrid.js";
 import createPattern from "./utils/createPattern.js";
-import { babyPulsarPattern, gunPattern, pentadecathlonPattern, pulsarPattern } from "./utils/patterns.js";
+import {
+  babyPulsarPattern,
+  gunPattern,
+  maxDensityStillLife,
+  pentadecathlonPattern,
+  pulsarPattern,
+} from "./utils/patterns.js";
 
 const board = document.querySelector(".board");
 const generationCount = document.getElementById("generation-number");
@@ -19,6 +25,7 @@ const gliderGun = document.getElementById("glider-gun");
 const pulsar = document.getElementById("pulsar");
 const smallPulsar = document.getElementById("baby-pulsar");
 const pentadecathlon = document.getElementById("pentadecathlon");
+const maximumDensity = document.getElementById("maximum-density");
 
 const rows = 28;
 const columns = 48;
@@ -208,6 +215,25 @@ pentadecathlon.addEventListener("click", () => {
   grid = createPattern(pentadecathlonPattern, rows, columns);
 
   // TODO: DRY this part of code
+  for (let i = 0; i < rows; i++) {
+    for (let j = 0; j < columns; j++) {
+      const isCellAlive = grid[i][j];
+      const cell = document.getElementById(`${i}-${j}`);
+
+      if (isCellAlive === 1) {
+        cell.style.backgroundColor = "#4caf50";
+      } else {
+        cell.style.backgroundColor = null;
+      }
+    }
+  }
+});
+
+
+maximumDensity.addEventListener("click", () => {
+  grid = createPattern(maxDensityStillLife, rows, columns);
+  
+  // TODO: DRY this part of code  
   for (let i = 0; i < rows; i++) {
     for (let j = 0; j < columns; j++) {
       const isCellAlive = grid[i][j];
