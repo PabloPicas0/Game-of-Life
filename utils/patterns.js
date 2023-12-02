@@ -137,7 +137,7 @@ export const pentadecathlonPattern = [
 ];
 
 // TODO: entire pattern needs to be restructured by minus one 
-export const maxDensityStillLife = [
+export const maxDensityStillLifePattern = [
   [5, 26],
   [5, 28],
   [5, 29],
