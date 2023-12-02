@@ -7,10 +7,11 @@ import createPattern from "./utils/createPattern.js";
 import {
   babyPulsarPattern,
   gunPattern,
-  maxDensityStillLife,
+  maxDensityStillLifePattern,
   pentadecathlonPattern,
   pulsarPattern,
 } from "./utils/patterns.js";
+import redrawGrid from "./utils/redrawGrid.js";
 
 const board = document.querySelector(".board");
 const generationCount = document.getElementById("generation-number");
@@ -89,19 +90,7 @@ const nextGeneration = (grid, rows, columns) => {
     }
   }
 
-  // TODO: DRY this part of code
-  for (let i = 0; i < rows; i++) {
-    for (let j = 0; j < columns; j++) {
-      const isCellAlive = futureGeneration[i][j];
-      const cell = document.getElementById(`${i}-${j}`);
-
-      if (isCellAlive === 1) {
-        cell.style.backgroundColor = "#4caf50";
-      } else {
-        cell.style.backgroundColor = null;
-      }
-    }
-  }
+  redrawGrid(futureGeneration, rows, columns);
 
   generation++;
   generationCount.textContent = `${generation}`;
@@ -160,92 +149,31 @@ patterns.addEventListener("click", () => {
 gliderGun.addEventListener("click", () => {
   grid = createPattern(gunPattern, rows, columns);
 
-  // TODO: DRY this part of code
-  for (let i = 0; i < rows; i++) {
-    for (let j = 0; j < columns; j++) {
-      const isCellAlive = grid[i][j];
-      const cell = document.getElementById(`${i}-${j}`);
-
-      if (isCellAlive === 1) {
-        cell.style.backgroundColor = "#4caf50";
-      } else {
-        cell.style.backgroundColor = null;
-      }
-    }
-  }
+  redrawGrid(grid, rows, columns);
 });
 
 pulsar.addEventListener("click", () => {
   grid = createPattern(pulsarPattern, rows, columns);
 
-  // TODO: DRY this part of code
-  for (let i = 0; i < rows; i++) {
-    for (let j = 0; j < columns; j++) {
-      const isCellAlive = grid[i][j];
-      const cell = document.getElementById(`${i}-${j}`);
-
-      if (isCellAlive === 1) {
-        cell.style.backgroundColor = "#4caf50";
-      } else {
-        cell.style.backgroundColor = null;
-      }
-    }
-  }
+  redrawGrid(grid, rows, columns);
 });
 
 smallPulsar.addEventListener("click", () => {
   grid = createPattern(babyPulsarPattern, rows, columns);
 
-  // TODO: DRY this part of code
-  for (let i = 0; i < rows; i++) {
-    for (let j = 0; j < columns; j++) {
-      const isCellAlive = grid[i][j];
-      const cell = document.getElementById(`${i}-${j}`);
-
-      if (isCellAlive === 1) {
-        cell.style.backgroundColor = "#4caf50";
-      } else {
-        cell.style.backgroundColor = null;
-      }
-    }
-  }
+  redrawGrid(grid, rows, columns);
 });
 
 pentadecathlon.addEventListener("click", () => {
   grid = createPattern(pentadecathlonPattern, rows, columns);
 
-  // TODO: DRY this part of code
-  for (let i = 0; i < rows; i++) {
-    for (let j = 0; j < columns; j++) {
-      const isCellAlive = grid[i][j];
-      const cell = document.getElementById(`${i}-${j}`);
-
-      if (isCellAlive === 1) {
-        cell.style.backgroundColor = "#4caf50";
-      } else {
-        cell.style.backgroundColor = null;
-      }
-    }
-  }
+  redrawGrid(grid, rows, columns);
 });
 
-
 maximumDensity.addEventListener("click", () => {
-  grid = createPattern(maxDensityStillLife, rows, columns);
-  
-  // TODO: DRY this part of code  
-  for (let i = 0; i < rows; i++) {
-    for (let j = 0; j < columns; j++) {
-      const isCellAlive = grid[i][j];
-      const cell = document.getElementById(`${i}-${j}`);
+  grid = createPattern(maxDensityStillLifePattern, rows, columns);
 
-      if (isCellAlive === 1) {
-        cell.style.backgroundColor = "#4caf50";
-      } else {
-        cell.style.backgroundColor = null;
-      }
-    }
-  }
+  redrawGrid(grid, rows, columns);
 });
 
 startGame();
