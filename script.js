@@ -4,14 +4,7 @@ import sleep from "./utils/sleep.js";
 import getCellNeighbours from "./utils/getCellNeighbours.js";
 import createGrid from "./utils/createGrid.js";
 import createPattern from "./utils/createPattern.js";
-import {
-  babyPulsarPattern,
-  gliderGunAndPulsarsPattern,
-  gunPattern,
-  maxDensityStillLifePattern,
-  pentadecathlonPattern,
-  pulsarPattern,
-} from "./utils/patterns.js";
+import { babyPulsarPattern, gunPattern, pentadecathlonPattern, pulsarPattern } from "./utils/patterns.js";
 import redrawGrid from "./utils/redrawGrid.js";
 
 const board = document.querySelector(".board");
@@ -27,8 +20,6 @@ const gliderGun = document.getElementById("glider-gun");
 const pulsar = document.getElementById("pulsar");
 const smallPulsar = document.getElementById("baby-pulsar");
 const pentadecathlon = document.getElementById("pentadecathlon");
-const maximumDensity = document.getElementById("maximum-density");
-const loadPattern = document.getElementById("load-pattern");
 
 const rows = 28;
 const columns = 48;
@@ -168,18 +159,6 @@ smallPulsar.addEventListener("click", () => {
 
 pentadecathlon.addEventListener("click", () => {
   grid = createPattern(pentadecathlonPattern, rows, columns);
-
-  redrawGrid(grid, rows, columns);
-});
-
-maximumDensity.addEventListener("click", () => {
-  grid = createPattern(maxDensityStillLifePattern, rows, columns);
-
-  redrawGrid(grid, rows, columns);
-});
-
-loadPattern.addEventListener("click", () => {
-  grid = gliderGunAndPulsarsPattern;
 
   redrawGrid(grid, rows, columns);
 });
