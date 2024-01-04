@@ -9,6 +9,6 @@ At each step in time, the following transitions occur:
 - Any live cell with more than three live neighbours dies, as if by overpopulation.
 - Any dead cell with exactly three live neighbours becomes a live cell, as if by reproduction.
 
-App functionality is based on ` user stories ` from [freeCodeCamp](https://www.freecodecamp.org/learn/front-end-development-libraries/front-end-development-libraries-projects/build-a-25--5-clock)
+App functionality is based on ` user stories ` from [freeCodeCamp](https://www.freecodecamp.org/learn/coding-interview-prep/take-home-projects/build-the-game-of-life)
 
 And here you can see the project live: https://pablopicas0.github.io/Game-of-Life/
